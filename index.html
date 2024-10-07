@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIF Background Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Poppins:wght@300&display=swap" rel="stylesheet"> <!-- Added Poppins font -->
+  <style>
+    /* Reset margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Set the background GIF to cover the entire body */
+    body {
+      background: url('images/af.gif') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Arial', sans-serif; /* Default font */
+      color: white;
+      text-align: center;
+    }
+
+    /* Header styling */
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px; /* Increase padding for better spacing */
+      background: rgba(0, 0, 0, 0.3); /* Transparent background */
+      backdrop-filter: blur(10px); /* Blur effect for header background */
+      z-index: 1000; /* Ensure it stays above the content */
+    }
+
+    /* Title styling */
+    .title {
+      font-family: 'Nanum Brush Script', cursive; /* Specified font */
+      font-size: 4.5rem;
+      animation: pop 0.5s ease-in-out infinite alternate; /* Animation effect */
+      color: white; /* White color for title */
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.1);
+      }
+    }
+
+    /* Navigation bar styling */
+    nav {
+      display: flex;
+      gap: 30px; /* Space between navigation items */
+    }
+
+    nav a {
+      font-family: 'Nanum Brush Script', cursive; /* Specified font for navigation */
+      color: white; /* White color for links */
+      text-decoration: none;
+      font-size: 3.2rem;
+      padding: 10px 20px; /* Padding for button-like appearance */
+      border-radius: 30px; /* Rounded edges */
+      position: relative; /* Position for hover effect */
+      overflow: hidden; /* Hide overflow for the hover effect */
+    }
+
+    /* Hover effect */
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%; /* Larger for the effect */
+      height: 300%; /* Larger for the effect */
+      background: rgba(255, 255, 255, 0.1); /* Light overlay */
+      border-radius: 50%; /* Circle shape */
+      transform: translate(-50%, -50%) scale(0); /* Start hidden */
+      transition: transform 0.4s; /* Smooth animation */
+      z-index: 0; /* Behind the text */
+    }
+
+    nav a:hover::before {
+      transform: translate(-50%, -50%) scale(1); /* Show overlay on hover */
+    }
+
+    nav a:hover {
+      color: white; /* Change text color on hover */
+    }
+
+    /* Content styling */
+    .content {
+      background: rgba(0, 0, 0, 0.7); /* Opaque black background for readability */
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-family: 'Poppins', sans-serif; /* Changed font for paragraph */
+      font-size: 1.2rem;
+      margin: 10px 0; /* Add margin to separate paragraphs */
+      animation: fadeInText 2s ease-in; /* Animation for text */
+    }
+
+    @keyframes fadeInText {
+      from {
+        opacity: 0;
+        transform: translateY(20px); /* Start below */
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0); /* Move to position */
+      }
+    }
+
+    /* About Section */
+    .about-section {
+      margin: 100px 0; /* Margin for spacing */
+      display: flex;
+      flex-direction: column; /* Stack items vertically */
+      align-items: center; /* Center items horizontally */
+      text-align: center; /* Center text */
+    }
+
+    .about-image {
+      width: 500px; /* Set image width */
+      animation: fadeIn 2s ease-in-out; /* Animation for image */
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .about-text {
+      display: flex;
+      align-items: center; /* Align items vertically */
+      justify-content: center; /* Center text and image */
+      margin-top: 20px; /* Space between image and text */
+      padding: 20px; /* Add padding to the text container */
+      border-radius: 10px; /* Rounded edges for the text container */
+    }
+
+    .about-text img {
+      width: 440px; /* Set width for inline image */
+      margin-left: 10px; /* Space between text and image */
+      border: 3px solid #fff; /* Border for inline image */
+      border-radius: 5px; /* Rounded edges for the inline image */
+    }
+
+    /* Social Section */
+    .social-section {
+      display: flex;
+      align-items: center; /* Center items vertically */
+      justify-content: space-between; /* Space between images and links */
+      margin: 50px 0; /* Margin for spacing */
+      width: 100%; /* Full width */
+      padding: 0 20px; /* Add some padding for better spacing */
+      font-family: 'Nanum Brush Script', cursive; /* Specified font for navigation */
+    }
+
+    .social-section img {
+      width: 150px; /* Set image width for social icons */
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column; /* Stack links vertically */
+      align-items: center; /* Center links horizontally */
+    }
+
+    .social-links a {
+      color: white; /* White color for links */
+      text-decoration: none; /* No underline */
+      font-size: 2rem; /* Size of the links */
+      margin: 10px 0; /* Margin for spacing */
+    }
+
+    html {
+    scroll-behavior: smooth;
+    }
+
+    /* Make it responsive for smaller screens */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .title {
+        font-size: 1.8rem; /* Adjust title size for smaller screens */
+      }
+
+      nav a {
+        font-size: 1rem; /* Adjust link size for smaller screens */
+        padding: 8px 12px; /* Adjust padding for smaller screens */
+      }
+
+      .about-image {
+        width: 200px; /* Adjust image size for smaller screens */
+      }
+
+      .about-text img {
+        width: 30px; /* Adjust inline image size for smaller screens */
+      }
+
+      .social-section img {
+        width: 100px; /* Adjust social icon size for smaller screens */
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title">NO RIVALS $CHAMP</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="https://pump.fun/board" target="_blank">Buy Now</a> <!-- Updated Buy Now link -->
+      <a href="#socials">Socials</a>
+    </nav>
+  </header>
+  <div class="content">
+    <div class="about-section">
+      <img src="images/Untitled design (32).png" alt="Animated Image" class="about-image"> <!-- Animated image -->
+      <div class="about-text">
+        <p>"I Have No Rivals". It’s named to show confident attitude, suggesting that it stands out among many other coins.</p>
+
+        <p>Memecoins are often created for fun and can gain popularity through memes and social media. They usually don’t have serious uses or technology behind them but rely on community support and jokes.</p>
+        
+        <p>In simple terms, "I Have No Rivals" means that this coin is meant to be entertaining and unique, celebrating the playful side of investing in cryptocurrencies. Its value can change a lot based on how popular it gets online.</p>
+        <img src="images/36a327abc921a9074776e16a4082bfbc.jpg" alt="Info Icon"> <!-- Inline image -->
+      </div>
+    </div>
+    
+    <!-- Social Section -->
+    <div id="socials" class="social-section">
+      <img src="images/af.png" alt="Twitter Icon"> <!-- Image for Twitter -->
+      <div class="social-links">
+        <a href="https://twitter.com/YourProfile" target="_blank">Twitter</a> <!-- Twitter link -->
+        <a href="https://t.me/YourChannel" target="_blank">Telegram</a> <!-- Telegram link -->
+      </div>
+      <img src="images/image-removebg-preview (39).png" alt="Telegram Icon"> <!-- Image for Telegram -->
+    </div>
+  </div>
+</body>
+</html>
